@@ -1,6 +1,7 @@
 const models = require('../models');
 
-function save(req,res){
+function createProduct(req,res){
+
     const category = {
         name:req.body.name,
         slug: req.body.slug,
@@ -21,10 +22,10 @@ function save(req,res){
 }
 
 
-const showAll = async (req,res)=>{
+const showAllCategories = async (req,res)=>{
     try{
-        const AllCategory = await models.Category.findAll({
-            
+
+        const AllCategory = await models.Category.findAll({          
         });
         if(AllCategory){
 
@@ -38,7 +39,6 @@ const showAll = async (req,res)=>{
                 message:"Category not found"
             })
         }
-
     }
     catch(err){
         res.status(500).json({
@@ -76,6 +76,6 @@ let categoryList = [];
 
 
 module.exports = {
-    save: save,
-    showAll: showAll
+    createProduct: createProduct,
+    showAllCategories: showAllCategories
 }
